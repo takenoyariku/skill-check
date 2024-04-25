@@ -6,5 +6,34 @@
 @endsection
 
 @section('content')
+  <div class="l-main">
+    <div class="column">
+      <h1>日記一覧</h1>
+      <a href="{{ route('diary.create') }}">新規作成</a>
+    </div>
 
+    <table>
+      <tbody>
+        <tr>
+          <th>サムネイル画像</th>
+          <th>本文</th>
+          <th>操作</th>
+        </tr>
+        @for($i=0; $i<5; $i++)
+        <tr>
+          <td><img src="{{ asset('img/dog.webp') }}" alt=""></td>
+          <td>コメントコメントコメントコメントコメント</td>
+          <td>
+            <a href="{{ route('diary.edit', ['diary' => 1]) }}">編集する</a>
+            <form action="{{ route('diary.destroy', ['diary' => 1]) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" onclick="return confirm('削除してもよろしいですか？')">削除</button>
+            </form>
+          </td>
+        </tr>
+        @endfor
+      </tbody>
+    </table>
+  </div>
 @endsection
