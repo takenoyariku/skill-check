@@ -1,0 +1,116 @@
+.l-main{
+  width: 1200px;
+  padding: 150px 0;
+  margin: 0 auto;
+
+  h1{
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  form{
+    margin-top: 50px;
+
+    table{
+      width: 100%;
+
+      tbody{
+        tr{
+          border-bottom: 1px dashed #dfdfdf;
+          
+          th{
+            width: 20%;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top;
+            padding-top: 20px;
+          }
+          
+          td{
+            width: 100%;
+            padding: 20px 0;
+
+            &:has(input[type=file]){
+              display: flex;
+              align-items: flex-start;
+              justify-content: space-between;
+
+              .input-image{
+                width: 49%;
+
+                input[type=file]{
+                  width: 100%;
+                  height: 50px;
+                  background: #fff;
+                  border: 1px solid #dfdfdf;
+                  font-size: 16px;
+                  border-radius: 3px;
+                  padding-right: 20px;
+                  
+                  &::file-selector-button{
+                    background: #efefef;
+                    color: #333;
+                    height: 50px;
+                    width: 40%;
+                    font-size: 16px;
+                    border: none;
+                    cursor: pointer;
+                    margin-right: 20px;
+                  }
+                }
+
+                p{
+                  margin-top: 10px;
+                }
+              }
+
+              .old-image{
+                width: 49%;
+
+                img{
+                  display: block;
+                  width: 100%;
+                  margin-top: 5px;
+                }
+              }
+            }
+
+            
+            input[type=text]{
+              width: 100%;
+              height: 40px;
+              border: 1px solid #dfdfdf;
+              font-size: 16px;
+              padding: 0 15px;
+              border-radius: 3px;
+              
+              &:focus{
+                outline: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    button{
+      display: block;
+      width: 200px;
+      height: 40px;
+      margin: 15px auto 0;
+      background: #3d7e00;
+      border: none;
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      transition: .3s;
+
+      &:hover{
+        cursor: pointer;
+        opacity: .7;
+        transition: .3s;
+      }
+    }
+  }
+}
