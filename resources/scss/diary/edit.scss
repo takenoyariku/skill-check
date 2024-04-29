@@ -58,10 +58,6 @@
                     margin-right: 20px;
                   }
                 }
-
-                p{
-                  margin-top: 10px;
-                }
               }
 
               .old-image{
@@ -87,6 +83,10 @@
               &:focus{
                 outline: none;
               }
+            }
+
+            p{
+              margin-top: 10px;
             }
           }
         }
