@@ -24,8 +24,8 @@
           <td><img src="{{ asset('img/dog.webp') }}" alt=""></td>
           <td>コメントコメントコメントコメントコメント</td>
           <td>
-            <a href="{{ route('diary.edit', ['diary' => 1]) }}">編集する</a>
-            <form action="{{ route('diary.destroy', ['diary' => 1]) }}" method="POST">
+            <a href="{{ route('diary.edit', ['id' => 1]) }}">編集する</a>
+            <form action="{{ route('diary.destroy', ['id' => 1]) }}" method="POST">
               @csrf
               @method('DELETE')
               <button type="submit" onclick="return confirm('削除してもよろしいですか？')">削除</button>

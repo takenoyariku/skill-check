@@ -27,6 +27,7 @@
             </th>
             <td>
               <input id="content" type="text">
+              <p>※200文字以内で入力してください</p>
             </td>
           </tr>
         </tbody>

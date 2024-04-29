@@ -8,7 +8,7 @@
 @section('content')
   <div class="l-main">
     <h1>編集</h1>
-    <form action="{{ route('diary.update', ['diary', 1]) }}" enctype="multipart/form-data">
+    <form action="{{ route('diary.update', ['id', 1]) }}" enctype="multipart/form-data">
       @csrf
       <table>
         <tbody>
@@ -33,6 +33,7 @@
             </th>
             <td>
               <input id="content" type="text">
+              <p>※200文字以内で入力してください</p>
             </td>
           </tr>
         </tbody>
