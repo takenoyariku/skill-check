@@ -8,7 +8,7 @@
 @section('content')
   <div class="l-main">
     <h1>新規作成</h1>
-    <form action="{{ route('diary.store') }}" enctype="multipart/form-data">
+    <form action="{{ route('diary.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <table>
         <tbody>
@@ -23,10 +23,10 @@
           </tr>
           <tr>
             <th>
-              <label for="content">本文</label>
+              <label for="comment">本文</label>
             </th>
             <td>
-              <input id="content" type="text">
+              <input id="comment" type="text" name="comment">
               <p>※200文字以内で入力してください</p>
             </td>
           </tr>

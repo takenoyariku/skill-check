@@ -30,6 +30,7 @@ class DiaryController extends Controller
    */
   public function store(Request $request): RedirectResponse
   {
+    app()->make('create_diary')->createDiary($request);
     return to_route('index');
   }
 
