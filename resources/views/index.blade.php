@@ -19,20 +19,20 @@
           <th>本文</th>
           <th>操作</th>
         </tr>
-        @for($i=0; $i<5; $i++)
+        @foreach($diaries as $item)
         <tr>
-          <td><img src="{{ asset('img/dog.webp') }}" alt=""></td>
-          <td>コメントコメントコメントコメントコメント</td>
+          <td><img src="{{ asset('storage/uploads/'.$item->image_path) }}" alt=""></td>
+          <td>{{ $item->comment }}</td>
           <td>
-            <a href="{{ route('diary.edit', ['id' => 1]) }}">編集する</a>
-            <form action="{{ route('diary.destroy', ['id' => 1]) }}" method="POST">
+            <a href="{{ route('diary.edit', ['id' => $item->id]) }}">編集する</a>
+            <form action="{{ route('diary.destroy', ['id' => $item->id]) }}" method="POST">
               @csrf
               @method('DELETE')
               <button type="submit" onclick="return confirm('削除してもよろしいですか？')">削除</button>
             </form>
           </td>
         </tr>
-        @endfor
+        @endforeach
       </tbody>
     </table>
   </div>

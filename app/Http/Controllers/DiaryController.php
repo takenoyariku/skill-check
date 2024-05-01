@@ -13,7 +13,8 @@ class DiaryController extends Controller
    */
   public function index(): View
   {
-    return view('index');
+    $diaries = app()->make('get_diary')->getDiary();
+    return view('index', compact('diaries'));
   }
 
   /**
