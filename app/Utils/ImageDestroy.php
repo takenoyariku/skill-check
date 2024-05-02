@@ -13,8 +13,6 @@ class ImageDestroy
    */
   public function destroyImage($request, $image_name): void
   {
-    if ($request->hasFile('image')) {
-      Storage::disk('public')->delete('uploads/'.$image_name);
-    }
+    Storage::disk('public')->delete('uploads/'.$image_name);
   }
 }

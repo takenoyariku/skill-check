@@ -62,6 +62,7 @@ class DiaryController extends Controller
    */
   public function destroy(int $id): RedirectResponse
   {
+    app()->make('destroy_diary')->destroyDiary($id);
     return to_route('index');
   }
 }

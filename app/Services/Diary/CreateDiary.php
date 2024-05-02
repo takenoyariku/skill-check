@@ -34,6 +34,19 @@ class CreateDiary
     $image_name = $this->unix.'/'.$request->file('image')->getClientOriginalName();
     return $image_name;
   }
+  
+  /**
+   * 作成データ配列
+   * @param \Illuminate\Http\Request
+   * @param int $id 日記ID
+   */
+  private function createData($request): array
+  {
+    return [
+      'image_path' => $this->imageName($request),
+      'comment' => $request->comment,
+    ];
+  }
 
   /**
    * 日記新規作成処理
@@ -42,13 +55,13 @@ class CreateDiary
   public function createDiary($request): void
   {
     DB::transaction(function() use($request) {
-
-      Diary::create([
-        'image_path' => $this->imageName($request),
-        'comment' => $request->comment,
-      ]);
-
-      $this->image_upload->uploadImage($request, $this->unix);
+      Diary::insert($this->createData($request));
     });
+
+    try{
+      $this->image_upload->uploadImage($request, $this->unix);
+    }catch(\Exception $e){
+      session()->flash('error_message', '画像がアップロードできませんでした');
+    }
   }
 }
