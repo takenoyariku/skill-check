@@ -21,6 +21,9 @@
               <div class="input-image">
                 <input id="image" type="file" name="image" accept=".jpg, .jpeg">
                 <p>※jpgのみアップロード可能です</p>
+                @error('image')
+                  <p class="error">{{ $message }}</p>
+                @enderror
               </div>
               <div class="old-image">
                 <p>現在の画像</p>
@@ -29,12 +32,15 @@
             </td>
           </tr>
           <tr>
-            <th>
+            <th class="required">
               <label for="">本文</label>
             </th>
             <td>
               <input id="comment" type="text" name="comment" value="{{ old('comment', $diary->comment) }}">
               <p>※200文字以内で入力してください</p>
+              @error('comment')
+                <p class="error">{{ $message }}</p>
+              @enderror
             </td>
           </tr>
         </tbody>

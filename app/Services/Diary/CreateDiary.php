@@ -27,17 +27,21 @@ class CreateDiary
 
   /**
    * DB保存用画像名生成
-   * @param \Illuminate\Http\Request
+   * @param \App\Http\Requests\DiaryRequest
    */
   private function imageName($request): string
   {
-    $image_name = $this->unix.'/'.$request->file('image')->getClientOriginalName();
+    if($request->hasFile('image')){
+      $image_name = $this->unix.'/'.$request->file('image')->getClientOriginalName();
+    }else{
+      $image_name = '';
+    }
     return $image_name;
   }
   
   /**
    * 作成データ配列
-   * @param \Illuminate\Http\Request
+   * @param \App\Http\Requests\DiaryRequest
    * @param int $id 日記ID
    */
   private function createData($request): array
@@ -50,7 +54,7 @@ class CreateDiary
 
   /**
    * 日記新規作成処理
-   * @param \Illuminate\Http\Request
+   * @param \App\Http\Requests\DiaryRequest
    */
   public function createDiary($request): void
   {

@@ -38,7 +38,7 @@ class UpdateDiary
 
   /**
    * DB保存用画像名生成
-   * @param \Illuminate\Http\Request
+   * @param \App\Http\Requests\DiaryRequest
    */
   private function imageName($request): string
   {
@@ -52,7 +52,7 @@ class UpdateDiary
 
   /**
    * 更新データ配列
-   * @param \Illuminate\Http\Request
+   * @param \App\Http\Requests\DiaryRequest
    * @param int $id 日記ID
    */
   private function updateData($request, $id): array
@@ -66,7 +66,7 @@ class UpdateDiary
 
   /**
    * 日記更新処理
-   * @param \Illuminate\Http\Request
+   * @param \App\Http\Requests\DiaryRequest
    * @param int $id 日記ID
    */
   public function updateDiary($request, $id): void

@@ -17,17 +17,23 @@
               <label for="image">サムネイル画像</label>
             </th>
             <td>
-              <input id="image" type="file" name="image" accept=".jpg, .jpeg">
+              <input id="image" type="file" name="image">
               <p>※jpgのみアップロード可能です</p>
+              @error('image')
+                <p class="error">{{ $message }}</p>
+              @enderror
             </td>
           </tr>
           <tr>
-            <th>
+            <th class="required">
               <label for="comment">本文</label>
             </th>
             <td>
               <input id="comment" type="text" name="comment" value="{{ old('comment') }}">
               <p>※200文字以内で入力してください</p>
+              @error('comment')
+                <p class="error">{{ $message }}</p>
+              @enderror
             </td>
           </tr>
         </tbody>

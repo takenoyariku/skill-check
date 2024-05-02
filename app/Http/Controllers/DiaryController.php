@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Diary;
-use Illuminate\Http\Request;
+use App\Http\Requests\DiaryRequest;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -28,8 +28,9 @@ class DiaryController extends Controller
 
   /**
    * 新規作成機能
+   * @param \App\Http\Requests\DiaryRequest
    */
-  public function store(Request $request): RedirectResponse
+  public function store(DiaryRequest $request): RedirectResponse
   {
     app()->make('create_diary')->createDiary($request);
     return to_route('index');
@@ -47,10 +48,10 @@ class DiaryController extends Controller
 
   /**
    * 更新機能
-   * @param \Illuminate\Http\Request
+   * @param \App\Http\Requests\DiaryRequest
    * @param int $id 日記ID
    */
-  public function update(Request $request, int $id): RedirectResponse
+  public function update(DiaryRequest $request, int $id): RedirectResponse
   {
     app()->make('update_diary')->updateDiary($request, $id);
     return to_route('index');
