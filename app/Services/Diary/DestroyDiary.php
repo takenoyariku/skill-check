@@ -26,9 +26,6 @@ class DestroyDiary
   {
     $diary = Diary::find($id);
 
-    //削除前画像データ取得
-    $image_path = $diary->image_path;
-
     DB::transaction(function() use($diary) {
       $diary->delete();
     });
