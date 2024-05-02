@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diary;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -36,20 +37,22 @@ class DiaryController extends Controller
 
   /**
    * 更新ページ 表示
-   * @param string $id 日記ID
+   * @param int $id 日記ID
    */
-  public function edit(string $id): View
+  public function edit(int $id): View
   {
-    return view('diary.edit');
+    $diary = Diary::find($id);
+    return view('diary.edit', compact('diary'));
   }
 
   /**
    * 更新機能
    * @param \Illuminate\Http\Request
-   * @param string $id 日記ID
+   * @param int $id 日記ID
    */
-  public function update(Request $request, string $id): RedirectResponse
+  public function update(Request $request, int $id): RedirectResponse
   {
+    app()->make('update_diary')->updateDiary($request, $id);
     return to_route('index');
   }
 
@@ -57,7 +60,7 @@ class DiaryController extends Controller
    * 削除機能
    * @param string $id 日記ID
    */
-  public function destroy(string $id): RedirectResponse
+  public function destroy(int $id): RedirectResponse
   {
     return to_route('index');
   }

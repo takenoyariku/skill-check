@@ -26,7 +26,7 @@
               <label for="comment">本文</label>
             </th>
             <td>
-              <input id="comment" type="text" name="comment">
+              <input id="comment" type="text" name="comment" value="{{ old('comment') }}">
               <p>※200文字以内で入力してください</p>
             </td>
           </tr>

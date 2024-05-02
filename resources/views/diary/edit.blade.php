@@ -8,8 +8,9 @@
 @section('content')
   <div class="l-main">
     <h1>編集</h1>
-    <form action="{{ route('diary.update', ['id', 1]) }}" enctype="multipart/form-data">
+    <form action="{{ route('diary.update', ['id' =>  $diary->id]) }}" enctype="multipart/form-data" method="POST">
       @csrf
+      @method('PUT')
       <table>
         <tbody>
           <tr>
@@ -23,16 +24,16 @@
               </div>
               <div class="old-image">
                 <p>現在の画像</p>
-                <img src="{{ asset('img/dog.webp') }}" alt="">
+                <img src="{{ asset('storage/uploads/'.$diary->image_path) }}" alt="">
               </div>
             </td>
           </tr>
           <tr>
             <th>
-              <label for="content">本文</label>
+              <label for="">本文</label>
             </th>
             <td>
-              <input id="content" type="text">
+              <input id="comment" type="text" name="comment" value="{{ old('comment', $diary->comment) }}">
               <p>※200文字以内で入力してください</p>
             </td>
           </tr>
