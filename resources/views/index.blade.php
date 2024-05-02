@@ -35,5 +35,15 @@
         @endforeach
       </tbody>
     </table>
+
+    @if(session('error_message'))
+      <div class="message error-message">
+        {{ session('error_message') }}
+      </div>
+    @elseif(session('success_message'))
+      <div class="message success-message">
+        {{ session('success_message') }}
+      </div>
+    @endif
   </div>
 @endsection

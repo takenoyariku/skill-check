@@ -33,7 +33,7 @@ class DiaryController extends Controller
   public function store(DiaryRequest $request): RedirectResponse
   {
     app()->make('create_diary')->createDiary($request);
-    return to_route('index');
+    return to_route('index')->with('success_message', '日記を登録しました');
   }
 
   /**
@@ -54,7 +54,7 @@ class DiaryController extends Controller
   public function update(DiaryRequest $request, int $id): RedirectResponse
   {
     app()->make('update_diary')->updateDiary($request, $id);
-    return to_route('index');
+    return to_route('index')->with('success_message', '日記を更新しました');
   }
 
   /**
@@ -64,6 +64,6 @@ class DiaryController extends Controller
   public function destroy(int $id): RedirectResponse
   {
     app()->make('destroy_diary')->destroyDiary($id);
-    return to_route('index');
+    return to_route('index')->with('success_message', '日記を削除しました');
   }
 }
