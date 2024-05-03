@@ -29,12 +29,12 @@ class CreateDiary
    * DB保存用画像名生成
    * @param \App\Http\Requests\DiaryRequest
    */
-  private function imageName($request): string
+  private function imageName($request): ?string
   {
     if($request->hasFile('image')){
       $image_name = $this->unix.'/'.$request->file('image')->getClientOriginalName();
     }else{
-      $image_name = '';
+      $image_name = null;
     }
     return $image_name;
   }

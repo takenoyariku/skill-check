@@ -30,7 +30,9 @@
               </div>
               <div class="old-image">
                 <p>現在の画像</p>
-                <img src="{{ asset('storage/uploads/'.$diary->image_path) }}" alt="">
+                @if($diary->image_path)
+                  <img src="{{ asset('storage/uploads/'.$diary->image_path) }}" alt="">
+                @endif
               </div>
             </td>
           </tr>

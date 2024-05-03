@@ -21,7 +21,11 @@
         </tr>
         @foreach($diaries as $item)
         <tr>
-          <td><img src="{{ asset('storage/uploads/'.$item->image_path) }}" alt=""></td>
+          <td>
+            @if($item->image_path)
+              <img src="{{ asset('storage/uploads/'.$item->image_path) }}" alt="">
+            @endif
+          </td>
           <td>{{ $item->comment }}</td>
           <td>
             <a href="{{ route('diary.edit', ['id' => $item->id]) }}">編集する</a>

@@ -50,7 +50,7 @@ class UpdateDiary
    * @param \App\Http\Requests\DiaryRequest
    * @param int $id 日記ID
    */
-  private function imageName($request, $id): string
+  private function imageName($request, $id): ?string
   {
     if($request->hasFile('image')){
       $image_name = $this->unix.'/'.$request->file('image')->getClientOriginalName();
