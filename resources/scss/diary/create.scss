@@ -94,23 +94,47 @@
       }
     }
 
-
-    button{
-      display: block;
-      width: 200px;
-      height: 40px;
+    .btn-area{
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 15px auto 0;
-      background: #3d7e00;
-      border: none;
-      font-size: 18px;
-      color: #fff;
-      font-weight: bold;
-      transition: .3s;
 
-      &:hover{
-        cursor: pointer;
-        opacity: .7;
+      a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 40px;
+        text-decoration: none;
+        color: #3d7e00;
+        border: 1px solid #3d7e00;
         transition: .3s;
+  
+        &:hover{
+          cursor: pointer;
+          opacity: .7;
+          transition: .3s;
+        }
+      }
+
+      button{
+        display: block;
+        width: 200px;
+        height: 40px;
+        margin-left: 10px;
+        background: #3d7e00;
+        border: none;
+        font-size: 18px;
+        color: #fff;
+        font-weight: bold;
+        transition: .3s;
+  
+        &:hover{
+          cursor: pointer;
+          opacity: .7;
+          transition: .3s;
+        }
       }
     }
   }

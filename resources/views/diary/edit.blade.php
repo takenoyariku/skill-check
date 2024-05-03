@@ -45,7 +45,10 @@
           </tr>
         </tbody>
       </table>
-      <button type="submit">更新する</button>
+      <div class="btn-area">
+        <a href="{{ route('index') }}">一覧へ戻る</a>
+        <button type="submit">更新する</button>
+      </div>
     </form>
   </div>
 @endsection
