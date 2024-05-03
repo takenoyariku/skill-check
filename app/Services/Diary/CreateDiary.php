@@ -55,6 +55,7 @@ class CreateDiary
     try{
       $this->image_upload->uploadImage($request, $this->unix);
     }catch(\Exception $e){
+      report($e);
       session()->flash('error_message', '画像をアップロードできませんでした');
     }
   }
