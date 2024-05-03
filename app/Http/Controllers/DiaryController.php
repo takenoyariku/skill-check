@@ -64,6 +64,6 @@ class DiaryController extends Controller
   public function destroy(int $id): RedirectResponse
   {
     app()->make('destroy_diary')->destroyDiary($id);
-    return to_route('index')->with('success_message', '日記を削除しました');
+    return back()->with('success_message', '日記を削除しました');
   }
 }
