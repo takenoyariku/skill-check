@@ -59,7 +59,7 @@ class DiaryController extends Controller
 
   /**
    * 削除機能
-   * @param string $id 日記ID
+   * @param int $id 日記ID
    */
   public function destroy(int $id): RedirectResponse
   {
