@@ -4,6 +4,9 @@
 @section('style')
   @vite(['resources/scss/diary/edit.scss'])
 @endsection
+@section('js')
+  @vite(['resources/js/file.js'])
+@endsection
 
 @section('content')
   <div class="l-main">

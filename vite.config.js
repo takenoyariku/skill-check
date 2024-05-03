@@ -9,6 +9,7 @@ export default defineConfig({
               'resources/scss/index.scss',
               'resources/scss/diary/create.scss',
               'resources/scss/diary/edit.scss',
+              'resources/js/file.js',
             ],
             refresh: true,
         }),

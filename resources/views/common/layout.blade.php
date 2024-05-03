@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @vite(['resources/scss/common/reset.scss'])
   @yield('style')
+  @yield('js')
   <title>@yield('title')</title>
 </head>
 <body>

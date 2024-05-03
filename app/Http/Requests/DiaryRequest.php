@@ -22,7 +22,7 @@ class DiaryRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'image' => 'image | mimes:jpeg,jpg | max:8192',
+          'image' => 'image | mimes:jpeg,jpg | max:2000',
           'comment' => 'required | string | max:200',
         ];
     }
