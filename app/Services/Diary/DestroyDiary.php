@@ -7,7 +7,8 @@ use App\Utils\ImageDestroy;
 use Illuminate\Support\Facades\DB;
 
 class DestroyDiary
-{  /**
+{  
+  /**
   * @var App\Utils\ImageDestroy 画像削除クラスインスタンス
   */
   private $image_destroy;
@@ -30,6 +31,6 @@ class DestroyDiary
       $diary->delete();
     });
 
-    $this->image_destroy->destroyImage($id, $diary->image_path);
+    $this->image_destroy->destroyImage($diary->image_path);
   }
 }

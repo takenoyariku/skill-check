@@ -82,8 +82,8 @@ class UpdateDiary
 
     try{
       if($request->hasFile('image')){
-        $this->image_destroy->destroyImage($request, $image_path);
         $this->image_upload->uploadImage($request, $this->unix);
+        $this->image_destroy->destroyImage($image_path);
       }
     }catch(\Exception $e){
       report($e);
