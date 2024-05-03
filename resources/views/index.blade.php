@@ -35,6 +35,7 @@
         @endforeach
       </tbody>
     </table>
+    {{ $diaries->links('pagination.custom') }}
 
     @if(session('error_message'))
       <div class="message error-message">
