@@ -14,6 +14,8 @@ class GetDiary
   {
     $diaries = Diary::query();
 
+    $diaries->latest();
+
     return $diaries->paginate(5);
   }
 }
