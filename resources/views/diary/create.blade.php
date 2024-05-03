@@ -17,7 +17,7 @@
               <label for="image">サムネイル画像</label>
             </th>
             <td>
-              <input id="image" type="file" name="image">
+              <input id="image" type="file" name="image" accept=".jpg, .jpeg">
               <p>※jpgのみアップロード可能です</p>
               @error('image')
                 <p class="error">{{ $message }}</p>

@@ -37,31 +37,27 @@ class UpdateDiary
   }
 
   /**
+   * 対象日記データ取得
+   * @param int $id 日記ID
+   */
+  private function getDiary($id): Diary
+  {
+    return Diary::find($id);
+  }
+
+  /**
    * DB保存用画像名生成
    * @param \App\Http\Requests\DiaryRequest
+   * @param int $id 日記ID
    */
-  private function imageName($request): string
+  private function imageName($request, $id): string
   {
     if($request->hasFile('image')){
       $image_name = $this->unix.'/'.$request->file('image')->getClientOriginalName();
     }else{
-      $image_name = '';
+      $image_name = $this->getDiary($id)->image_path;
     }
     return $image_name;
-  }
-
-  /**
-   * 更新データ配列
-   * @param \App\Http\Requests\DiaryRequest
-   * @param int $id 日記ID
-   */
-  private function updateData($request, $id): array
-  {
-    return [
-      'id' => $id,
-      'image_path' => $this->imageName($request),
-      'comment' => $request->comment,
-    ];
   }
 
   /**
@@ -71,20 +67,22 @@ class UpdateDiary
    */
   public function updateDiary($request, $id): void
   {
-    //日記データ取得
-    $diary = Diary::find($id);
+    $diary = $this->getDiary($id);
 
     //更新前画像データ取得
     $image_path = $diary->image_path;
 
     DB::transaction(function() use($diary, $request, $id){
-      $diary->update($this->updateData($request, $id));
+      $diary->update([
+        'id' => $id,
+        'image_path' => $this->imageName($request, $id),
+        'comment' => $request->comment,
+      ]);
     });
 
     try{
-      $this->image_destroy->destroyImage($request, $image_path);
-
       if($request->hasFile('image')){
+        $this->image_destroy->destroyImage($request, $image_path);
         $this->image_upload->uploadImage($request, $this->unix);
       }
     }catch(\Exception $e){

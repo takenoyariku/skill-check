@@ -38,19 +38,6 @@ class CreateDiary
     }
     return $image_name;
   }
-  
-  /**
-   * 作成データ配列
-   * @param \App\Http\Requests\DiaryRequest
-   * @param int $id 日記ID
-   */
-  private function createData($request): array
-  {
-    return [
-      'image_path' => $this->imageName($request),
-      'comment' => $request->comment,
-    ];
-  }
 
   /**
    * 日記新規作成処理
@@ -59,7 +46,10 @@ class CreateDiary
   public function createDiary($request): void
   {
     DB::transaction(function() use($request) {
-      Diary::insert($this->createData($request));
+      Diary::create([
+        'image_path' => $this->imageName($request),
+        'comment' => $request->comment,
+      ]);
     });
 
     try{
